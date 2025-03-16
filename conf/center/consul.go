@@ -59,7 +59,7 @@ func (c *ConsulConfigCenter) Initialize(conf *ktconf.CenterConf) {
 }
 
 func (c *ConsulConfigCenter) RegisterCallbacks(callbacks ...Callback) {
-	c.callbacks = callbacks
+	c.callbacks = append(c.callbacks, callbacks...)
 }
 
 func (c *ConsulConfigCenter) Register(dest string, conf ktconf.Conf) {

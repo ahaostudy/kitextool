@@ -61,7 +61,7 @@ func (c *NacosConfigCenter) Initialize(conf *ktconf.CenterConf) {
 }
 
 func (c *NacosConfigCenter) RegisterCallbacks(callbacks ...Callback) {
-	c.callbacks = callbacks
+	c.callbacks = append(c.callbacks, callbacks...)
 }
 
 func (c *NacosConfigCenter) Register(dest string, conf ktconf.Conf) {
