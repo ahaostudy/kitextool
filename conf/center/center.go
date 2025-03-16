@@ -19,9 +19,8 @@ func ApplyDynamicConfig(center ConfigCenter, centerConf *ktconf.CenterConf, dest
 	logger := func(c ktconf.Conf) {
 		log.Infof("config changed: %+v", c)
 	}
-	callbacks := []Callback{logger}
 
 	center.Initialize(centerConf)
-	center.RegisterCallbacks(callbacks...)
+	center.RegisterCallbacks(logger)
 	center.Register(dest, conf)
 }
