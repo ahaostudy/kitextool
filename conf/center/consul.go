@@ -42,7 +42,7 @@ func (c *ConsulConfigCenter) Initialize(conf *ktconf.CenterConf) {
 		opts := c.opts
 
 		if conf != nil {
-			utils.SetDefault(&opts.Addr, fmt.Sprintf("%s:%d", conf.Host, conf.Port))
+			utils.SetDefault(&opts.Addr, fmt.Sprintf("%s:%d", conf.GetHost(), conf.Port))
 		}
 
 		if opts.ConfigParser == nil {

@@ -1,5 +1,10 @@
 package ktconf
 
+import (
+	"github.com/aiagt/kitextool/utils"
+	"github.com/aiagt/kitextool/utils/lists"
+)
+
 type MultiClientConf map[string]ClientConf
 
 func (m *MultiClientConf) ParseClientConf(data string) error {
@@ -50,4 +55,8 @@ type Resolver struct {
 	Address  []string `yaml:"address"`
 	Username string   `yaml:"username"`
 	Password string   `yaml:"password"`
+}
+
+func (c *Resolver) GetAddress() []string {
+	return lists.Map(c.Address, utils.CompleteAddress)
 }

@@ -10,9 +10,9 @@ import (
 
 func NewConsulRegistry() Registry {
 	return func(conf *ktconf.Registry) []registry.Registry {
-		result := make([]registry.Registry, len(conf.Address))
+		result := make([]registry.Registry, len(conf.GetAddress()))
 
-		for _, address := range conf.Address {
+		for _, address := range conf.GetAddress() {
 			consulConfig := consulapi.Config{
 				Address:  address,
 				HttpAuth: &consulapi.HttpBasicAuth{Username: conf.Username, Password: conf.Password},

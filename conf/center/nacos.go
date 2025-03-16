@@ -42,7 +42,7 @@ func (c *NacosConfigCenter) Initialize(conf *ktconf.CenterConf) {
 		opts := c.opts
 
 		if conf != nil {
-			utils.SetDefault(&opts.Address, conf.Host)
+			utils.SetDefault(&opts.Address, conf.GetHost())
 			utils.SetDefault(&opts.Port, uint64(conf.Port))
 			utils.SetDefault(&opts.NamespaceID, conf.Key)
 		}

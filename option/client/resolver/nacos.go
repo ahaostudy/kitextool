@@ -14,9 +14,9 @@ import (
 )
 
 func NewNacosResolver(conf *ktconf.Resolver) []discovery.Resolver {
-	result := make([]discovery.Resolver, len(conf.Address))
+	result := make([]discovery.Resolver, len(conf.GetAddress()))
 
-	for _, address := range conf.Address {
+	for _, address := range conf.GetAddress() {
 		host, portStr, err := net.SplitHostPort(address)
 		if err != nil {
 			log.Fatal(err)

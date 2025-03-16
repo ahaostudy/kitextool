@@ -9,9 +9,9 @@ import (
 )
 
 func NewConsulResolver(conf *ktconf.Resolver) []discovery.Resolver {
-	result := make([]discovery.Resolver, len(conf.Address))
+	result := make([]discovery.Resolver, len(conf.GetAddress()))
 
-	for _, address := range conf.Address {
+	for _, address := range conf.GetAddress() {
 		consulConfig := consulapi.Config{
 			Address:  address,
 			HttpAuth: &consulapi.HttpBasicAuth{Username: conf.Username, Password: conf.Password},

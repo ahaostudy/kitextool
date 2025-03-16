@@ -1,5 +1,10 @@
 package ktconf
 
+import (
+	"github.com/aiagt/kitextool/utils"
+	"github.com/aiagt/kitextool/utils/lists"
+)
+
 type ServerConf struct {
 	Server       Server     `yaml:"server"`
 	Log          Log        `yaml:"log"`
@@ -50,10 +55,24 @@ type Registry struct {
 	Password string   `yaml:"password"`
 }
 
+func (c *Registry) GetAddress() []string {
+	return lists.Map(c.Address, utils.CompleteAddress)
+}
+
 type CenterConf struct {
 	Host string `yaml:"host"`
 	Port int    `yaml:"port"`
 	Key  string `yaml:"key"`
+}
+
+func (c *CenterConf) GetHost() string {
+	const localhost = "localhost"
+
+	if c.Host == "" {
+		return localhost
+	}
+
+	return c.Host
 }
 
 type DB struct {
